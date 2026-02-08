@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Portal</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px;
+    width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: darkgreen;
+}
+
+.success {
+    text-align: center;
+    color: green;
+    margin-top: 15px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <input type="text" placeholder="Full Name" required>
+    <input type="number" placeholder="NIN Number" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <input type="date" required>
+
+    <button onclick="done()">Submit</button>
+
+    <div class="success" id="success">
+        ✅ Registration Successful
+    </div>
+</div>
+
+<script>
+function done(){
+    document.getElementById("success").style.display = "block";
+}
+</script>
+
+</body>
+</html>

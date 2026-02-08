@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="5;url=index.html">
+<title>Success</title>
+<style>
+body{
+ font-family:Arial;
+ background:#e8fbe8;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ height:100vh;
+}
+.box{
+ background:white;
+ padding:30px;
+ border-radius:10px;
+ text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>✅ Registration Successful</h2>
+<p>Next person in 5 seconds...</p>
+</div>
+</body>
+</html>

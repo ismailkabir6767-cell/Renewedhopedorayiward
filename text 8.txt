@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;padding:20px}
+input,button{padding:8px;margin-top:5px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border:1px solid #ccc;padding:5px}
+button{background:green;color:white;border:none}
+</style>
+</head>
+<body>
+
+<h3>Coordinator Login</h3>
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="panel" style="display:none">
+
+<h2>Dashboard</h2>
+<p><b>Total Registered:</b> <span id="total"></span></p>
+
+<button onclick="download()">Download Excel (CSV)</button>
+
+<h3>Change Password</h3>
+<input id="newpass" placeholder="New Password">
+<button onclick="change()">Save Password</button>
+
+<table>
+<thead>
+<tr><th>Name</th><th>NIN</th><th>Phone</th><th>DOB</th><th>Date & Time</th></tr>
+</thead>
+<tbody id="list"></tbody>
+</table>
+
+</div>
+
+<script>
+let savedPass=localStorage.getItem("adminpass")||"1234";
+
+function login(){
+ if(pass.value==savedPass){
+  panel.style.display="block";
+  load();
+ }else alert("Wrong password");
+}
+
+function load(){
+ let d=JSON.parse(localStorage.getItem("reg"))||[];
+ total.innerText=d.length;
+ list.innerHTML=d.map(r=>`
+<tr>
+<td>${r.Name}</td><td>${r.NIN}</td>
+<td>${r.Phone}</td><td>${r.DOB}</td>
+<td>${r.Time}</td>
+</tr>`).join("");
+}
+
+function download(){
+ let d=JSON.parse(localStorage.getItem("reg"))||[];
+ let csv="Name,NIN,Phone,DOB,Time\n";
+ d.forEach(r=>csv+=`${r.Name},${r.NIN},${r.Phone},${r.DOB},${r.Time}\n`);
+ let a=document.createElement("a");
+ a.href="data:text/csv;charset=utf-8,"+encodeURI(csv);
+ a.download="registrations.csv";
+ a.click();
+}
+
+function change(){
+ if(newpass.value){
+  localStorage.setItem("adminpass",newpass.value);
+  alert("Password changed");
+ }
+}
+</script>
+</body>
+</html>

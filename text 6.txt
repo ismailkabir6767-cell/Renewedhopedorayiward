@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<style>
+body{font-family:Arial;background:#eef2f3;display:flex;justify-content:center;align-items:center;height:100vh;}
+.box{background:#fff;padding:20px;width:330px;border-radius:8px}
+input,button{width:100%;padding:10px;margin-top:10px}
+button{background:green;color:white;border:none;font-size:16px}
+</style>
+</head>
+<body>
+<div class="box">
+<h3 style="text-align:center">Registration</h3>
+
+<input id="name" placeholder="Full Name">
+<input id="nin" placeholder="NIN Number">
+<input id="phone" placeholder="Phone Number">
+<input id="dob" type="date">
+
+<button onclick="save()">Submit</button>
+</div>
+
+<script>
+function save(){
+ let n=name.value, nin2=nin.value, p=phone.value, d=dob.value;
+ if(!n||!nin2||!p||!d){alert("Cika duk bayanai");return;}
+
+ let data=JSON.parse(localStorage.getItem("reg"))||[];
+ data.push({
+  Name:n,
+  NIN:nin2,
+  Phone:p,
+  DOB:d,
+  Time:new Date().toLocaleString()
+ });
+ localStorage.setItem("reg",JSON.stringify(data));
+ location="success.html";
+}
+</script>
+</body>
+</html>
